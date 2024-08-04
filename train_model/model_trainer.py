@@ -7,7 +7,6 @@ model.train(
     epochs=25,
     imgsz=640,
     batch=4,  # Reduce batch size for CPU
-    workers=2,  # Number of data loader workers (adjust based on your CPU)
     project='licens_plate',  # Project name for saving results
     exist_ok=True,  # Overwrite existing project
     device='cpu',  # Use CPU
@@ -29,11 +28,8 @@ model.train(
     mosaic=True,  # Enable mosaic augmentation
     mixup=True,  # Enable mixup augmentation
     rect=False,  # Use rectangular training
-    cache_images=False,  # Disable caching images for CPU
-    sync_bn=False,  # Disable synchronized batch normalization
     workers=2,  # Number of data loader workers
     patience=10,  # Early stopping patience
-    image_weights=True,  # Use weighted image selection for training
     cos_lr=True,  # Use cosine learning rate scheduling
     label_smoothing=0.1,  # Label smoothing factor
     seed=42,  # Random seed for reproducibility
