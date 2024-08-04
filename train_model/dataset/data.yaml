@@ -1,0 +1,6 @@
+train: /Users/yevhensynytsia/work/cv_cours/licens_plate_recognition/train_model/dataset/train/images
+val: /Users/yevhensynytsia/work/cv_cours/licens_plate_recognition/train_model/dataset/valid/images
+test: /Users/yevhensynytsia/work/cv_cours/licens_plate_recognition/train_model/dataset/test/images
+
+nc: 1
+names: ['License_Plate']
