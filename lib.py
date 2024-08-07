@@ -1,3 +1,4 @@
+"""Helper"""
 import string
 import easyocr
 import cv2

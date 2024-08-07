@@ -15,7 +15,7 @@ license_plate_detector = YOLO('./train_model/models/licens_plate_model.pt')
 if not cap.isOpened():
     print("Error: Could not open video.")
     exit()
-      
+     
 WIDTH = 1380
 HEIGHT = 730
 
@@ -44,24 +44,22 @@ while cap.isOpened():
         lp_box = license_plate.numpy().xyxy.astype(np.int_).flatten()
         
         car_with_plate = get_car_with_plate(lp_box, detect_vehicles)
-        
-        r = car_with_plate['vehicle']
-        if len(r) != 0:
-            license_plate_crop = frame[int(lp_box[0]):int(lp_box[1]), int(lp_box[2]): int(lp_box[3]), :]
-            # process license plate
-            license_plate_crop_gray = cv2.cvtColor(license_plate_crop, cv2.COLOR_BGR2GRAY)
-            _, license_plate_crop_thresh = cv2.threshold(license_plate_crop_gray, 64, 255, cv2.THRESH_BINARY_INV)
-            # read license plate number
-            license_plate_text, license_plate_text_score = read_license_plate(license_plate_crop_thresh)
-            car_with_plate['license_plate_text'] = license_plate_text
-            to_render_data.append(car_with_plate)
+
+        if len(car_with_plate['vehicle']) != 0:
+            # license_plate_crop = frame[int(lp_box[1]):int(lp_box[3]), int(lp_box[0]):int(lp_box[2])]
+            # # process license plate
+            # license_plate_crop_gray = cv2.cvtColor(license_plate_crop, cv2.COLOR_BGR2GRAY)
+            # _, license_plate_crop_thresh = cv2.threshold(license_plate_crop_gray, 64, 255, cv2.THRESH_BINARY_INV)
+            # # read license plate number
+            # license_plate_text, license_plate_text_score = read_license_plate(license_plate_crop_thresh)
+            # if license_plate_text is not None:
+            #     car_with_plate['license_plate_text'] = license_plate_text
+                to_render_data.append(car_with_plate)
     
     render_to_frame(frame, to_render_data)
-             
-    
-    
+
     # Display the frame
-    cv2.imshow('Video', frame)
+    cv2.imshow('Licens plate recognizer', frame)
 
     # Press 'q' to quit the video playback
     if cv2.waitKey(25) & 0xFF == ord('q'):
