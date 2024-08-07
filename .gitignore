@@ -24,6 +24,7 @@ __pycache__
 sort
 
 # Tests
+/video_examples
 /coverage
 /.nyc_output
 

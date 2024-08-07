@@ -6,7 +6,7 @@ from render import render_to_frame
 import math
 
 # Load the video file
-video_path = 'car.mp4'
+video_path = './video_examples/car_4.mp4'
 cap = cv2.VideoCapture(video_path)
 model = YOLO("yolov8n.pt")
 license_plate_detector = YOLO('./train_model/models/licens_plate_model.pt')
@@ -54,7 +54,7 @@ while cap.isOpened():
             # license_plate_text, license_plate_text_score = read_license_plate(license_plate_crop_thresh)
             # if license_plate_text is not None:
             #     car_with_plate['license_plate_text'] = license_plate_text
-                to_render_data.append(car_with_plate)
+            to_render_data.append(car_with_plate)
     
     render_to_frame(frame, to_render_data)
 
